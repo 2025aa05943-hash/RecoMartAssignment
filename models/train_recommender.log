@@ -1,0 +1,21 @@
+2026-07-19 14:27:21 | INFO | Loading data from data_lake/processed/interactions_enriched.csv
+2026-07-19 14:41:53 | INFO | Loading data from data_lake/processed/interactions_enriched.csv
+2026-07-19 14:48:23 | INFO | Loading data from data_lake/processed/interactions_enriched.csv
+2026-07-19 14:48:34 | INFO | Raw dataset | rows=2755641 | users=1407580 | items=235061
+2026-07-19 14:48:34 | INFO | Reducing dataset for tractable training
+2026-07-19 14:48:37 | INFO | After minimum-count filter | rows=896576 | users=81288 | items=67617
+2026-07-19 14:48:38 | INFO | After user cap | rows=744838 | users=50000
+2026-07-19 14:48:39 | INFO | After item cap | rows=464988 | items=10000
+2026-07-19 14:48:39 | INFO | Final reduced dataset | rows=464988 | users=44434 | items=10000
+2026-07-19 14:48:39 | INFO | Splitting train/test by time within each user
+2026-07-19 14:49:11 | INFO | Split data | train_rows=355069 | test_rows=109919
+2026-07-19 14:49:11 | INFO | Building sparse user-item matrix
+2026-07-19 14:49:11 | INFO | Train matrix shape | users=44434 | items=10000 | nnz=185836
+2026-07-19 14:49:11 | INFO | Training SVD model | n_components=32
+2026-07-19 14:49:13 | INFO | Computing latent factors
+2026-07-19 14:49:13 | INFO | Evaluating RMSE on observed test interactions
+2026-07-19 14:49:13 | INFO | Evaluating sampled ranking metrics | sample_users=1000 | top_k=10
+2026-07-19 14:49:15 | INFO | Saved model artifact to models\svd_recommender_20260719T091823Z.joblib
+2026-07-19 14:49:15 | INFO | Training complete in 51.60 seconds
+2026-07-19 14:49:15 | INFO | Metrics: {'rmse': 11.456431, 'precision_at_k': 0.0012, 'recall_at_k': 0.005096, 'hit_rate_at_k': 0.01, 'explained_variance_ratio_sum': 0.223613}
+2026-07-19 14:49:15 | INFO | Run metadata stored in tracking/model_runs.db
