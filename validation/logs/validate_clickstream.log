@@ -1,0 +1,3 @@
+2026-07-19 13:32:34 | INFO | Starting clickstream validation | input=data_lake\raw\source=clickstream\type=csv\dt=2026-07-19\run_id=20260719T075521Z\events.csv
+2026-07-19 13:32:44 | INFO | Validation report written to validation\reports\clickstream_validation.json
+2026-07-19 13:32:44 | INFO | Rows=2756101 | Columns=5 | Passed=False

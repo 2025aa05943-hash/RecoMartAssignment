@@ -1,0 +1,44 @@
+{
+  "dataset_name": "products",
+  "file_path": "data_lake\\raw\\source=clickstream\\type=json\\dt=2026-07-19\\run_id=20260719T075550Z\\products_raw.json",
+  "total_rows": 20,
+  "total_columns": 8,
+  "required_columns": [
+    "id",
+    "title",
+    "price",
+    "category"
+  ],
+  "missing_columns": [],
+  "extra_columns": [
+    "description",
+    "image",
+    "rating_rate",
+    "rating_count"
+  ],
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "id": 0,
+    "title": 0,
+    "price": 0,
+    "category": 0
+  },
+  "duplicate_rows": 0,
+  "rule_violations": {
+    "missing_values_total": 0,
+    "duplicate_rows": 0,
+    "invalid_id_rows": 0,
+    "invalid_title_rows": 0,
+    "invalid_price_rows": 0,
+    "invalid_category_rows": 0,
+    "invalid_rating_rows": 0,
+    "invalid_image_rows": 0
+  },
+  "valid_rows_estimate": 20,
+  "quality_score": 100.0,
+  "validation_passed": false,
+  "issues": [
+    "Extra columns present: ['description', 'image', 'rating_rate', 'rating_count']"
+  ],
+  "checked_at_utc": "2026-07-19T08:04:40Z"
+}

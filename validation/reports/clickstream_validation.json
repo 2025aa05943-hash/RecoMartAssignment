@@ -1,0 +1,40 @@
+{
+  "dataset_name": "clickstream",
+  "file_path": "data_lake\\raw\\source=clickstream\\type=csv\\dt=2026-07-19\\run_id=20260719T075521Z\\events.csv",
+  "total_rows": 2756101,
+  "total_columns": 5,
+  "required_columns": [
+    "timestamp",
+    "visitorid",
+    "event",
+    "itemid",
+    "transactionid"
+  ],
+  "missing_columns": [],
+  "extra_columns": [],
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "timestamp": 0,
+    "visitorid": 0,
+    "event": 0,
+    "itemid": 0,
+    "transactionid": 0
+  },
+  "duplicate_rows": 460,
+  "rule_violations": {
+    "missing_values_total": 0,
+    "duplicate_rows": 460,
+    "invalid_timestamp_rows": 0,
+    "invalid_event_rows": 0,
+    "invalid_visitorid_rows": 0,
+    "invalid_itemid_rows": 0,
+    "missing_transactionid_on_transaction_rows": 0
+  },
+  "valid_rows_estimate": 2755641,
+  "quality_score": 99.98,
+  "validation_passed": false,
+  "issues": [
+    "Duplicate rows found: 460"
+  ],
+  "checked_at_utc": "2026-07-19T08:02:44Z"
+}

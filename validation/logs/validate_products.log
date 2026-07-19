@@ -1,0 +1,41 @@
+2026-07-19 13:33:42 | INFO | Starting product validation | input=data_lake\raw\source=clickstream\type=json\dt=2026-07-19\run_id=20260719T075550Z\products_raw.json
+2026-07-19 13:33:42 | ERROR | Validation failed | error=unhashable type: 'dict'
+Traceback (most recent call last):
+  File "C:\Copied_old_laptop\Copied\personal\BITS\sem_2\DMML\assignment1\RecoMartRecommendation\src\validation\validate_products.py", line 250, in main
+    metrics = compute_validation_metrics(records, input_json)
+  File "C:\Copied_old_laptop\Copied\personal\BITS\sem_2\DMML\assignment1\RecoMartRecommendation\src\validation\validate_products.py", line 108, in compute_validation_metrics
+    duplicate_rows = int(df.duplicated().sum()) if not df.empty else 0
+                         ~~~~~~~~~~~~~^^
+  File "C:\Copied_old_laptop\Copied\personal\BITS\sem_2\DMML\assignment1\RecoMartRecommendation\venv\Lib\site-packages\pandas\core\frame.py", line 8091, in duplicated
+    labels, shape = map(list, zip(*map(f, vals), strict=True))
+                              ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Copied_old_laptop\Copied\personal\BITS\sem_2\DMML\assignment1\RecoMartRecommendation\venv\Lib\site-packages\pandas\core\frame.py", line 8063, in f
+    labels, shape = algorithms.factorize(vals, size_hint=len(self))
+                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Copied_old_laptop\Copied\personal\BITS\sem_2\DMML\assignment1\RecoMartRecommendation\venv\Lib\site-packages\pandas\core\algorithms.py", line 821, in factorize
+    codes, uniques = factorize_array(
+                     ~~~~~~~~~~~~~~~^
+        values,
+        ^^^^^^^
+        use_na_sentinel=use_na_sentinel,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        size_hint=size_hint,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Copied_old_laptop\Copied\personal\BITS\sem_2\DMML\assignment1\RecoMartRecommendation\venv\Lib\site-packages\pandas\core\algorithms.py", line 637, in factorize_array
+    uniques, codes = table.factorize(
+                     ~~~~~~~~~~~~~~~^
+        values,
+        ^^^^^^^
+    ...<3 lines>...
+        ignore_na=use_na_sentinel,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7873, in pandas._libs.hashtable.PyObjectHashTable.factorize
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7783, in pandas._libs.hashtable.PyObjectHashTable._unique
+TypeError: unhashable type: 'dict'
+2026-07-19 13:34:40 | INFO | Starting product validation | input=data_lake\raw\source=clickstream\type=json\dt=2026-07-19\run_id=20260719T075550Z\products_raw.json
+2026-07-19 13:34:40 | INFO | Validation report written to validation\reports\products_validation.json
+2026-07-19 13:34:40 | INFO | Rows=20 | Columns=8 | Passed=False
