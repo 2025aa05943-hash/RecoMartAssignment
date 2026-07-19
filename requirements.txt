@@ -1,0 +1,6 @@
+requests
+certifi
+pandas
+reportlab
+matplotlib
+pyyaml
