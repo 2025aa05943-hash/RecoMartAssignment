@@ -1,0 +1,34 @@
+project:
+  name: recommendation_feature_store
+  storage_mode: sqlite
+
+paths:
+  warehouse_db: warehouse/recommendation_features.db
+  registry_file: feature_store/feature_registry.json
+
+feature_sets:
+  user_features:
+    table: user_features
+    primary_key: visitorid
+    version: 1
+    description: Aggregated user behavior features
+
+  item_features:
+    table: item_features
+    primary_key: itemid
+    version: 1
+    description: Aggregated item popularity and quality features
+
+  interaction_features:
+    table: interaction_features
+    primary_key: interaction_id
+    version: 1
+    description: Row-level enriched interactions for model training
+
+  item_cooccurrence_features:
+    table: item_cooccurrence_features
+    primary_key:
+      - itemid_a
+      - itemid_b
+    version: 1
+    description: Item-item similarity features from co-occurrence analysis

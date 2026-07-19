@@ -1,0 +1,199 @@
+{
+  "user_features": [
+    {
+      "name": "total_interactions",
+      "source": "clickstream",
+      "transformation": "groupby(visitorid).size()",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "unique_items",
+      "source": "clickstream",
+      "transformation": "groupby(visitorid).nunique(itemid)",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "views",
+      "source": "clickstream",
+      "transformation": "count(event == 'view') per visitorid",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "addtocarts",
+      "source": "clickstream",
+      "transformation": "count(event == 'addtocart') per visitorid",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "transactions",
+      "source": "clickstream",
+      "transformation": "count(event == 'transaction') per visitorid",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "activity_frequency_per_day",
+      "source": "clickstream",
+      "transformation": "total_interactions / active_days",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "transaction_rate",
+      "source": "clickstream",
+      "transformation": "transactions / total_interactions",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "recency_days",
+      "source": "clickstream",
+      "transformation": "(max_timestamp - last_interaction_ts) in days",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "avg_rating_per_user",
+      "source": "products + clickstream",
+      "transformation": "mean(rating_rate) over interacted items",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    }
+  ],
+  "item_features": [
+    {
+      "name": "total_interactions",
+      "source": "clickstream",
+      "transformation": "groupby(itemid).size()",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "unique_users",
+      "source": "clickstream",
+      "transformation": "groupby(itemid).nunique(visitorid)",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "popularity_score",
+      "source": "clickstream",
+      "transformation": "views*1 + addtocarts*2 + transactions*3",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "avg_price_per_item",
+      "source": "products",
+      "transformation": "mean(price) by itemid",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "avg_rating_per_item",
+      "source": "products",
+      "transformation": "mean(rating_rate) by itemid",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "avg_rating_count",
+      "source": "products",
+      "transformation": "mean(rating_count) by itemid",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    }
+  ],
+  "interaction_features": [
+    {
+      "name": "interaction_weight",
+      "source": "clickstream",
+      "transformation": "event mapping: view=1, addtocart=2, transaction=3",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": false
+    },
+    {
+      "name": "visitorid_encoded",
+      "source": "clickstream",
+      "transformation": "factorize(visitorid)",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "itemid_encoded",
+      "source": "clickstream",
+      "transformation": "factorize(itemid)",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "category_encoded",
+      "source": "products",
+      "transformation": "factorize(category)",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    }
+  ],
+  "item_cooccurrence_features": [
+    {
+      "name": "co_occurrence_count",
+      "source": "transaction baskets",
+      "transformation": "count item pairs in same transactionid",
+      "dtype": "integer",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    },
+    {
+      "name": "co_occurrence_score",
+      "source": "transaction baskets",
+      "transformation": "co_occurrence_count / sqrt(support_a * support_b)",
+      "dtype": "float",
+      "version": 1,
+      "training_available": true,
+      "inference_available": true
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+# =====================================================
+# Storage Configuration
+# Recommendation Engine Data Pipeline
+# =====================================================
+
+project:
+  name: Recommendation Engine
+  environment: local
+  timezone: UTC
+
+storage:
+  mode: local               # local | s3
+
+  local:
+    base_directory: data_lake
+
+  s3:
+    bucket_name: recommendation-data-lake
+    region: us-east-1
+    raw_prefix: raw/
+
+folder_structure:
+  raw: raw
+  processed: processed
+  logs: logs
+  configs: configs
+  archive: archive
+
+partitioning:
+  source: true
+  file_type: true
+  ingestion_date: true
+  run_id: true
+
+sources:
+
+  clickstream:
+    source_name: clickstream
+    format: csv
+    landing_folder: source=clickstream/type=csv
+
+  products_api:
+    source_name: products_api
+    format: json
+    landing_folder: source=products_api/type=json
+
+logging:
+  level: INFO
+  log_directory: data_lake/logs
+  log_rotation: daily
+
+retention:
+  raw_data_days: 365
+  logs_days: 90
+
+metadata:
+  save_ingestion_timestamp: true
+  save_source_name: true
+  save_file_name: true
+  save_run_id: true
